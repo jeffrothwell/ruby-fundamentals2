@@ -48,7 +48,20 @@ elsif dramarank >=4 && comedyrank <=3
 # at this point we know dramarank is 1, 2, or 3, so no need to check that again
 elsif comedyrank >= 4
   puts "Have a few laughs with #{comedy}"
-# at this point they could only have entered 3 or lower on everything, so default to book recomendation
+# at this point they could only have entered 3 or lower on everything
+# the stretch assignment wants us to display a recommendation for the genre they ranked higher
+# than the other two, if that is the case
+elsif docrank > comedyrank && docrank > dramarank
+  puts "Looks like you're leaning toward a documentary - try #{documentary}."
+elsif comedyrank > docrank && comedyrank > dramarank
+  puts "A little laughter never hurt anyone - try #{comedy}"
+elsif dramarank > docrank && dramarank > comedyrank
+  puts "Going out on a limb here, but give #{drama} a try."
+elsif dramarank == comedyrank && dramarank != docrank  #added this myself, covers the case where they ranked drama and comedy equally, and I already know they've ranked documentaries lower
+  puts "This is getting tough, you sure are picky - maybe you'll like #{dramedy}"
+# now we know every rank is 3 or less, and there isn't a stand-out preference yet, not even a dramedy will do, time to recommend a book
+elsif dramarank == 3 && comedyrank == 3 && docrank == 3
+  puts "Kinda sorta ok with everything, well try Forrest Gump, everyone likes it!"
 else
   puts "Maybe a good book is more your thing\n might I suggest a book about film appreciation?"
 end
